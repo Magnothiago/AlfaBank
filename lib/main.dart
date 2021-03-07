@@ -1,4 +1,5 @@
 import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/screnn/formulario_transferencia.dart';
+import 'package:alfa_banck/screnn/login.dart';
 import 'package:flutter/material.dart';
 import 'screnn/lista_transferencia.dart';
 
@@ -14,9 +15,8 @@ class App extends StatelessWidget {
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.redAccent,
         )
-
       ),
-      home: new listaTransferencia(),
+      home: new Login(),
     );
   }
 }
