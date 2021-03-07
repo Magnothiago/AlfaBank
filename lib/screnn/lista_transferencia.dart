@@ -1,7 +1,7 @@
-import 'package:alfa_banck/formulario_transferencia.dart';
-import 'package:alfa_banck/transferencia.dart';
+import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/screnn/formulario_transferencia.dart';
+import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/modules/transferencia.dart';
 import 'package:flutter/material.dart';
-import 'item_transferencia.dart';
+import '../components/item_transferencia.dart';
 
 class listaTransferencia extends StatefulWidget {
 
@@ -18,7 +18,6 @@ class _listaTransferenciaState extends State<listaTransferencia> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
         title: Text('Lista de tranferências'),
         centerTitle: true,
       ),
@@ -42,6 +41,11 @@ class _listaTransferenciaState extends State<listaTransferencia> {
             ),
           );
           future.then((listaTransferenciaRecebida) {
+            if(listaTransferenciaRecebida == null
+                || listaTransferenciaRecebida.valor == null
+                || listaTransferenciaRecebida.conta ==null){
+              return;
+            }
             setState(() {
               widget.listatransferencias.add(listaTransferenciaRecebida);
             });

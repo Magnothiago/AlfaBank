@@ -1,4 +1,4 @@
-import 'package:alfa_banck/transferencia.dart';
+import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/modules/transferencia.dart';
 import 'package:flutter/material.dart';
 
 class ItemTransferencia extends StatelessWidget {
@@ -14,7 +14,7 @@ class ItemTransferencia extends StatelessWidget {
       Card(
         child: ListTile(
           leading: Icon(Icons.monetization_on),
-          title: Text(this.transferencia.valor.toString()),
+          title: Text("R\$ ${this.transferencia.valor.toString()}"),
           subtitle: Text('Conta: ${this.transferencia.conta}'),
         ),
       );

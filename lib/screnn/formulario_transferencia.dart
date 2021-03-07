@@ -1,5 +1,6 @@
-import 'package:alfa_banck/editor.dart';
-import 'package:alfa_banck/transferencia.dart';
+import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/components/editor.dart';
+import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/components/item_transferencia.dart';
+import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/modules/transferencia.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,12 +38,10 @@ class FormularioTransferencia extends StatelessWidget {
                 var valor = controladorCampoValor.text;
                 Transferencia transferencia =
                     new Transferencia(double.tryParse(valor), conta);
-                // if(transferencia != null){
-                //   Navigator.pop(context);
-                // }
-                Navigator.pop(context,transferencia);
+                Navigator.pop(context, transferencia);
               },
-              child: Text('Confirmar'),
+              child: Text('Confirmar',
+                style: TextStyle(color: Colors.white),),
             )
           ],
         ),
