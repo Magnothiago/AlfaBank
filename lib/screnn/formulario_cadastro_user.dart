@@ -1,8 +1,10 @@
 import 'package:alfa_banck/components/editorUsuario.dart';
 import 'package:alfa_banck/modules/usuario.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:cpfcnpj/cpfcnpj.dart';
+import 'package:flutter/services.dart';
 
 class CadastroUsuario extends StatefulWidget {
   @override
@@ -16,6 +18,34 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
   final TextEditingController _campoTelefoneController =
       TextEditingController();
 
+  bool validarDados(nome, cpf, email, telefone) {
+    return (nome != null &&
+            CPF.isValid(cpf) &&
+            email != null &&
+            telefone != null)
+        ? true
+        : false;
+  }
+
+  Future<void> _showDialog() async {
+    return (BuildContext context) {
+      return ElevatedButton(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Deu tudo certo! Você tá dentro."),
+            action: SnackBarAction(
+              label: "Ok",
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ));
+        },
+        child: Text("Deu tudo certo! Você tá dentro."),
+      );
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +56,9 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 20,
+            ),
             EditorUsuario(
               controller: this._campoNomeController,
               dica: "João Silva",
@@ -35,10 +68,13 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
             ),
             EditorUsuario(
               controller: this._campoCpfController,
-              dica: "123.123.123-00",
               rotulo: "CPF",
               icon: Icon(Icons.credit_card),
               tipoEntrada: TextInputType.number,
+              formatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                CpfInputFormatter(),
+              ],
             ),
             Center(
               child: Padding(
@@ -66,8 +102,23 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
               rotulo: "Telefone",
               icon: Icon(Icons.phone_android),
               tipoEntrada: TextInputType.phone,
+              formatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                TelefoneInputFormatter(),
+              ],
             ),
-            RaisedButton(
+            SizedBox(
+              height: 20,
+            ),
+            TextButton(
+              style: ButtonStyle(
+                alignment: Alignment.center,
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+                textStyle: MaterialStateProperty.all(
+                  TextStyle(fontSize: 20),
+                ),
+              ),
               child: Text("Cadastrar"),
               onPressed: () {
                 var nome = this._campoNomeController.text;
@@ -77,7 +128,23 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
 
                 Usuario usuario = Usuario(nome, cpf, email, telefone);
 
-                print(usuario.toString());
+                if (validarDados(usuario.nome, usuario.cpf, usuario.email,
+                    usuario.telefone)) {
+                  print(usuario.toString());
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Deu tudo certo, você tá dentro!"),
+                      backgroundColor: Colors.red,
+                      action: SnackBarAction(
+                        label: "Ok",
+                        onPressed: () {},
+                        textColor: Colors.white,
+                      ),
+                      duration: Duration(seconds: 6),
+                    ),
+                  );
+                  Navigator.of(context).pop();
+                }
               },
             )
           ],

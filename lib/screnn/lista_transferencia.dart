@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../components/item_transferencia.dart';
 import 'formulario_transferencia.dart';
 
-class listaTransferencia extends StatefulWidget {
-  final List<Transferencia> listatransferencias = List();
+class ListaTransferencia extends StatefulWidget {
+  final List<Transferencia> listatransferencias = [];
   @override
-  _listaTransferenciaState createState() => _listaTransferenciaState();
+  _ListaTransferenciaState createState() => _ListaTransferenciaState();
 }
 
-class _listaTransferenciaState extends State<listaTransferencia> {
+class _ListaTransferenciaState extends State<ListaTransferencia> {
   @override
   Widget build(BuildContext context) {
     // widget.listatransferencias.add(Transferencia(250, '123456'));

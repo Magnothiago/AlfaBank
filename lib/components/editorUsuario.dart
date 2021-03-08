@@ -1,5 +1,7 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 //ignore: must_be_immutable
 class EditorUsuario extends StatelessWidget {
@@ -8,9 +10,15 @@ class EditorUsuario extends StatelessWidget {
   final String dica;
   final Icon icon;
   TextInputType tipoEntrada;
+  List<TextInputFormatter> formatters;
 
   EditorUsuario(
-      {this.controller, this.rotulo, this.dica, this.icon, this.tipoEntrada});
+      {this.controller,
+      this.rotulo,
+      this.dica,
+      this.icon,
+      this.tipoEntrada,
+      this.formatters});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +36,7 @@ class EditorUsuario extends StatelessWidget {
           autovalidateMode: AutovalidateMode.always,
           keyboardType: this.tipoEntrada,
           controller: this.controller,
+          inputFormatters: this.formatters,
         ),
       ),
     );
