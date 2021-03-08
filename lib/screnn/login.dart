@@ -1,3 +1,4 @@
+import 'package:alfa_banck/screnn/formulario_cadastro_user.dart';
 import 'package:flutter/material.dart';
 import '../components/button_login.dart';
 
@@ -24,11 +25,16 @@ class Login extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            Button(Colors.red, Colors.white, 'LOGIN'),
+            Button(Colors.red, Colors.white, 'LOGIN', () {}),
             SizedBox(
               width: 30,
             ),
-            Button(Colors.red, Colors.white, 'CRIAR CONTA'),
+            Button(Colors.red, Colors.white, 'CRIAR CONTA', () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CadastroUsuario()),
+              );
+            }),
           ],
         ),
       ),
