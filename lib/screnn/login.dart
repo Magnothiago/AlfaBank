@@ -2,11 +2,9 @@ import 'package:alfa_banck/components/button_login_inicial.dart';
 import 'package:alfa_banck/components/text_fild.dart';
 import 'package:flutter/material.dart';
 
-
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -54,10 +52,16 @@ class Login extends StatelessWidget {
             Button_login_inicial(
               title: 'Login',
               hasBorder: true,
+              aoClicar: () {},
             ),
             SizedBox(
-              height: 20,
-            )
+              height: 10,
+            ),
+            Button_login_inicial(
+              title: 'Voltar',
+              hasBorder: true,
+              aoClicar: () {},
+            ),
           ],
         ),
       ),
