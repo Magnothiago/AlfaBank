@@ -4,8 +4,9 @@ class Button extends StatelessWidget {
   String _nome;
   Color _corBotao;
   Color corTexto;
+  Function aoClicar;
 
-  Button(this._corBotao, this.corTexto, this._nome);
+  Button(this._corBotao, this.corTexto, this._nome, this.aoClicar);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,9 @@ class Button extends StatelessWidget {
             primary: _corBotao,
             backgroundColor: this._corBotao,
           ),
-          onPressed: () {},
+          onPressed: () {
+            this.aoClicar();
+          },
         ),
       ),
     );

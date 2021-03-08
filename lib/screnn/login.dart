@@ -1,18 +1,16 @@
+import 'package:alfa_banck/components/button_login_inicial.dart';
+import 'package:alfa_banck/components/text_fild.dart';
 import 'package:flutter/material.dart';
-import '../components/button_login.dart';
 
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.only(
-          top: 80,
-          left: 40,
-          right: 40,
-        ),
-        color: Colors.white,
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.all(32),
         child: ListView(
+          //mainAxisAlignment: MainAxisAlignment.end,
           children: [
             SizedBox(
               width: 240,
@@ -21,14 +19,49 @@ class Login extends StatelessWidget {
               child: Image.asset('assets/alfa.png'),
               //child: Image.asset('assets/alfa_novo.png'),
             ),
-            SizedBox(
-              width: 10,
+            TextFildLogin(
+              tipoTeclado: TextInputType.number,
+              hintText: 'CPF',
+              ocultarTexto: false,
+              prefixIconData: Icons.mail_outline,
             ),
-            Button(Colors.red, Colors.white, 'LOGIN'),
             SizedBox(
-              width: 30,
+              height: 20.0,
             ),
-            Button(Colors.red, Colors.white, 'CRIAR CONTA'),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                TextFildLogin(
+                  tipoTeclado: TextInputType.number,
+                  hintText: 'Senha',
+                  ocultarTexto: true,
+                  prefixIconData: Icons.lock_outline,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Esqueci minha senha',
+                  style: TextStyle(color: Colors.red),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Button_login_inicial(
+              title: 'Login',
+              hasBorder: true,
+              aoClicar: () {},
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Button_login_inicial(
+              title: 'Voltar',
+              hasBorder: true,
+              aoClicar: () {},
+            ),
           ],
         ),
       ),
