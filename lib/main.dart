@@ -16,7 +16,7 @@ class App extends StatelessWidget {
           buttonTheme: ButtonThemeData(
             buttonColor: Colors.redAccent,
           )),
-      home: Login(),
+      home: TelaInicial(),
     );
   }
 }

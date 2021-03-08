@@ -1,6 +1,7 @@
 import 'package:alfa_banck/screnn/formulario_cadastro_user.dart';
 import 'package:flutter/material.dart';
 import '../components/button_login.dart';
+import 'login.dart';
 
 class TelaInicial extends StatelessWidget {
   @override
@@ -25,7 +26,12 @@ class TelaInicial extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            Button(Colors.red, Colors.white, 'LOGIN', () {}),
+            Button(Colors.red, Colors.white, 'LOGIN', () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+            }),
             SizedBox(
               width: 30,
             ),
