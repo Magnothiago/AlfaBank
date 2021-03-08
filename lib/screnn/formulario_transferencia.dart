@@ -1,8 +1,7 @@
-import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/components/editor.dart';
-import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/components/item_transferencia.dart';
-import 'file:///C:/Users/djthi/IdeaProjects/alfa_banck/lib/modules/transferencia.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../components/editor.dart';
+import '../modules/transferencia.dart';
 
 class FormularioTransferencia extends StatelessWidget {
   final TextEditingController controladorCampoNumeroConta =
@@ -40,8 +39,10 @@ class FormularioTransferencia extends StatelessWidget {
                     new Transferencia(double.tryParse(valor), conta);
                 Navigator.pop(context, transferencia);
               },
-              child: Text('Confirmar',
-                style: TextStyle(color: Colors.white),),
+              child: Text(
+                'Confirmar',
+                style: TextStyle(color: Colors.white),
+              ),
             )
           ],
         ),
