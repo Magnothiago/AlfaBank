@@ -60,7 +60,9 @@ class Login extends StatelessWidget {
             Button_login_inicial(
               title: 'Voltar',
               hasBorder: true,
-              aoClicar: () {},
+              aoClicar: () {
+                Navigator.of(context).pop();
+              },
             ),
           ],
         ),
