@@ -7,6 +7,8 @@ class TelaPrincipal extends StatelessWidget {
       backgroundColor: Colors.red,
       appBar: AppBar(
         centerTitle: true,
+        actions: [],
+        leading: Icon(null),
         title: Text(
           "Bem vindo: Nome do cara",
           style: TextStyle(fontFamily: "Courier", fontWeight: FontWeight.bold),
@@ -79,6 +81,7 @@ class TelaPrincipal extends StatelessWidget {
             ),
           )
         ],
+
       ),
     );
   }

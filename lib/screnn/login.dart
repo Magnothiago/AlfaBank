@@ -54,7 +54,8 @@ class Login extends StatelessWidget {
               title: 'Login',
               hasBorder: true,
               aoClicar: () {
-                Navigator.push(context,MaterialPageRoute(builder:(context) =>TelaPrincipal()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TelaPrincipal()));
               },
             ),
             SizedBox(

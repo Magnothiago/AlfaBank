@@ -1,9 +1,11 @@
+import 'package:alfa_banck/modules/usuario.dart';
 import 'package:alfa_banck/screnn/formulario_cadastro_user.dart';
 import 'package:flutter/material.dart';
 import '../components/button_login.dart';
 import 'login.dart';
 
 class TelaInicial extends StatelessWidget {
+  Usuario usuario;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +38,15 @@ class TelaInicial extends StatelessWidget {
               width: 30,
             ),
             Button(Colors.red, Colors.white, 'CRIAR CONTA', () {
-              Navigator.push(
+              Future future = Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CadastroUsuario()),
               );
+
+              future.then((usuarioRecebido){
+                this.usuario = usuarioRecebido;
+                print(usuario.toString());
+              });
             }),
           ],
         ),
