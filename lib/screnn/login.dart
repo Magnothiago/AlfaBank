@@ -1,5 +1,6 @@
 import 'package:alfa_banck/components/button_login_inicial.dart';
 import 'package:alfa_banck/components/text_fild.dart';
+import 'package:alfa_banck/screnn/tela_principal.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -52,7 +53,10 @@ class Login extends StatelessWidget {
             Button_login_inicial(
               title: 'Login',
               hasBorder: true,
-              aoClicar: () {},
+              aoClicar: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TelaPrincipal()));
+              },
             ),
             SizedBox(
               height: 10,

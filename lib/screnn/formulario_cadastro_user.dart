@@ -27,25 +27,6 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
         : false;
   }
 
-  Future<void> _showDialog() async {
-    return (BuildContext context) {
-      return ElevatedButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text("Deu tudo certo! Você tá dentro."),
-            action: SnackBarAction(
-              label: "Ok",
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ));
-        },
-        child: Text("Deu tudo certo! Você tá dentro."),
-      );
-    };
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,9 +109,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
 
                 Usuario usuario = Usuario(nome, cpf, email, telefone);
 
-                if (validarDados(usuario.nome, usuario.cpf, usuario.email,
-                    usuario.telefone)) {
-                  print(usuario.toString());
+                if (validarDados(usuario.nome, usuario.cpf, usuario.email, usuario.telefone)) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text("Deu tudo certo, você tá dentro!"),
@@ -143,7 +122,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                       duration: Duration(seconds: 6),
                     ),
                   );
-                  Navigator.of(context).pop();
+                  Navigator.pop(context, usuario);
                 }
               },
             )

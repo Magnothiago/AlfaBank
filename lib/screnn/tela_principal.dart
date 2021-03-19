@@ -6,6 +6,8 @@ class TelaPrincipal extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        actions: [],
+        leading: Icon(null),
         title: Text(
           "Titulo da pagina",
           style: TextStyle(fontFamily: "Courier", fontWeight: FontWeight.bold),
@@ -13,6 +15,7 @@ class TelaPrincipal extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.all(5),
+        children: [],
       ),
     );
   }
