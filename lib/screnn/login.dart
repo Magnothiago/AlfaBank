@@ -61,13 +61,13 @@ class Login extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Button_login_inicial(
-              title: 'Voltar',
-              hasBorder: true,
-              aoClicar: () {
-                Navigator.of(context).pop();
-              },
-            ),
+            // Button_login_inicial(
+            //   title: 'Voltar',
+            //   hasBorder: true,
+            //   aoClicar: () {
+            //     Navigator.of(context).pop();
+            //   },
+            // ),
           ],
         ),
       ),
