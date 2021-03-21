@@ -1,4 +1,4 @@
-import 'package:alfa_banck/modules/transferencia.dart';
+import 'package:alfa_banck/src/modules/transferencia.dart';
 import 'package:flutter/material.dart';
 import '../components/item_transferencia.dart';
 import 'formulario_transferencia.dart';

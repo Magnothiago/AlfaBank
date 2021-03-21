@@ -1,10 +1,12 @@
-import 'package:alfa_banck/modules/usuario.dart';
-import 'package:alfa_banck/screnn/formulario_cadastro_user.dart';
+import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:flutter/material.dart';
 import '../components/button_login.dart';
+import 'formulario_cadastro_user.dart';
 import 'login.dart';
 
 class TelaInicial extends StatelessWidget {
+  static const String routeName = 'tela_inicial';
+
   Usuario usuario;
   @override
   Widget build(BuildContext context) {
