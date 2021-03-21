@@ -6,84 +6,116 @@ class TelaPrincipal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.redAccent,
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.redAccent,
         centerTitle: true,
-        actions: [],
-        leading: Icon(null),
-        title: Text(
-          "Bem vindo: Nome do cara",
-          style: TextStyle(fontFamily: "Courier", fontWeight: FontWeight.bold),
-        ),
+        title: Text('Bem vindo'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(5),
         children: [
-          SizedBox(
-            height: 30,
-          ),
-          Card(
-            child: InkWell(
-              splashColor: Colors.white,
-              onTap: (){
-                Text("Chamar tela de detalhes do usuário");
-              },
+          InkWell(
+            onTap: () {},
+            child: Card(
               child: Container(
-                padding: EdgeInsets.all(20),
-                width: 300,
-                height: 200,
-                child: ListView(
-                  children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text("Saldo atual",style: TextStyle(fontSize: 25,color: Colors.red),),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text("250",style: TextStyle(fontSize: 20,color: Colors.black),)
-                  ],
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Card(
-            child:InkWell(
-              onTap: (){
-                Text('Editar perfil do cara');
-              },
-              child: Container(
-                padding: EdgeInsets.all(20),
-                width: 300,
                 height: 150,
-                child: ListView(
-                  padding: EdgeInsets.all(5),
-                  children: [
-                    SizedBox(
-                      height: 10,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.attach_money_sharp,
+                      color: Colors.redAccent,
                     ),
-                    Text("Meu perfil",style: TextStyle(fontSize: 20,color: Colors.red),
+                    title: Text(
+                      'Saldo',
+                      style: TextStyle(fontSize: 25),
                     ),
-                    SizedBox(
-                      height: 10,
+                    subtitle: Text(
+                      '250',
+                      style: TextStyle(fontSize: 18, color: Colors.blueAccent),
                     ),
-                    Text("Nome",style: TextStyle(fontSize: 20,color: Colors.black),
                   ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  Text("CPF",style: TextStyle(fontSize: 20,color: Colors.black),)
-                  ],
                 ),
-
               ),
             ),
-          )
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              child: Container(
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.attach_money_sharp,
+                      color: Colors.redAccent,
+                    ),
+                    title: Text(
+                      'Fatura',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    subtitle: Text(
+                      '170',
+                      style: TextStyle(fontSize: 18, color: Colors.red),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              child: Container(
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.account_circle_sharp,
+                      color: Colors.redAccent,
+                    ),
+                    title: Text(
+                      'Meu Perfil',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    //subtitle: Text(
+                    //'170',
+                    //style: TextStyle(fontSize: 18, color: Colors.red),
+                    //),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              child: Container(
+                height: 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.swap_horiz_sharp,
+                      color: Colors.redAccent,
+                    ),
+                    title: Text(
+                      'Transações',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    //subtitle: Text(
+                    //'170',
+                    //style: TextStyle(fontSize: 18, color: Colors.red),
+                    //),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
-
       ),
     );
   }
