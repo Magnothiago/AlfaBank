@@ -1,3 +1,4 @@
+import 'package:alfa_banck/src/screnn/tela_inicial.dart';
 import 'package:flutter/material.dart';
 
 class RootPage extends StatefulWidget {
@@ -9,8 +10,6 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-
-    );
+    return TelaInicial();
   }
 }
