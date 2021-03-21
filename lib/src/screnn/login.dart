@@ -1,6 +1,6 @@
-import 'package:alfa_banck/src/components/button_login_inicial.dart';
+import 'package:alfa_banck/src/components/button_login_start.dart';
 import 'package:alfa_banck/src/components/text_fild.dart';
-import 'package:alfa_banck/src/screnn/tela_principal.dart';
+import 'package:alfa_banck/src/screnn/screen_main.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

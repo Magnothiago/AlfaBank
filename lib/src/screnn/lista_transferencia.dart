@@ -1,7 +1,7 @@
 import 'package:alfa_banck/src/modules/transferencia.dart';
 import 'package:flutter/material.dart';
-import '../components/item_transferencia.dart';
-import 'formulario_transferencia.dart';
+import '../components/item_transfer.dart';
+import 'screen_transfer.dart';
 
 class ListaTransferencia extends StatefulWidget {
   final List<Transferencia> listatransferencias = [];
