@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TextFildLogin extends StatelessWidget {
   final String hintText;
@@ -7,6 +8,8 @@ class TextFildLogin extends StatelessWidget {
   final bool ocultarTexto;
   final Function onChanged;
   final TextInputType tipoTeclado;
+  final TextEditingController controller;
+  final List<TextInputFormatter> formatters;
 
   TextFildLogin(
       {this.hintText,
@@ -14,11 +17,16 @@ class TextFildLogin extends StatelessWidget {
         this.suffixconData,
         this.ocultarTexto,
         this.onChanged,
-        this.tipoTeclado});
+        this.tipoTeclado,
+        this.controller,
+        this.formatters
+      });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      inputFormatters: formatters,
+      controller: controller,
       obscureText: ocultarTexto,
       onChanged: this.onChanged,
       style: TextStyle(

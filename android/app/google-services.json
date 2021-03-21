@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "764782200615",
+    "project_id": "alfabank-742aa",
+    "storage_bucket": "alfabank-742aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764782200615:android:300c5ae943dc4f42ff4b02",
+        "android_client_info": {
+          "package_name": "com.example.alfa_banck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764782200615-ngcgv7jvpcpabt2qqikhi4p8rs4luog1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfa_banck",
+            "certificate_hash": "fcaf5b261766be80fb9cbb3ed4249314f1ec91f6"
+          }
+        },
+        {
+          "client_id": "764782200615-37tlhtuetebjjog1crcenve7jgsa79un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg09_CHy6_WjjXoDbW9G7EBZPNQApNIvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764782200615-37tlhtuetebjjog1crcenve7jgsa79un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

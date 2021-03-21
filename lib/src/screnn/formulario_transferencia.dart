@@ -31,7 +31,7 @@ class FormularioTransferencia extends StatelessWidget {
               dica: '000',
               tipoEditor: TextInputType.number,
             ),
-            RaisedButton(
+            TextButton(
               onPressed: () {
                 var conta = controladorCampoNumeroConta.text;
                 var valor = controladorCampoValor.text;

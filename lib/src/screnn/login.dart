@@ -1,9 +1,16 @@
-import 'package:alfa_banck/components/button_login_inicial.dart';
-import 'package:alfa_banck/components/text_fild.dart';
-import 'package:alfa_banck/screnn/tela_principal.dart';
+import 'package:alfa_banck/src/components/button_login_inicial.dart';
+import 'package:alfa_banck/src/components/text_fild.dart';
+import 'package:alfa_banck/src/screnn/tela_principal.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Login extends StatelessWidget {
+  static const String routeName = "login_page";
+  TextEditingController _controllerCpf = TextEditingController();
+  TextEditingController _controllerPassword = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +32,8 @@ class Login extends StatelessWidget {
               hintText: 'CPF',
               ocultarTexto: false,
               prefixIconData: Icons.mail_outline,
+              controller: _controllerCpf,
+              formatters: [FilteringTextInputFormatter.digitsOnly, CpfInputFormatter()],
             ),
             SizedBox(
               height: 20.0,
@@ -37,6 +46,7 @@ class Login extends StatelessWidget {
                   hintText: 'Senha',
                   ocultarTexto: true,
                   prefixIconData: Icons.lock_outline,
+                  controller: _controllerPassword,
                 ),
                 SizedBox(
                   height: 10,
