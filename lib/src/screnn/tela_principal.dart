@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TelaPrincipal extends StatelessWidget {
+  static const String routeName = "tela_principal";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
