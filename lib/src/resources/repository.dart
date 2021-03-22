@@ -1,4 +1,5 @@
 
+import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/authentication_resources.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,7 +9,9 @@ class Repository {
   final _authResources = AuthenticationResources();
 
   Stream<User> get onAuthStateChange => _authResources.onAuthStateChange;
-  Future<int> cadastroComEmailAndSenha(String email, String senha) => _authResources.cadastrarComEmailAndSenha(email, senha);
+  Future<int> cadastroComEmailAndSenha(Usuario usuario) => _authResources.cadastrarComEmailAndSenha(usuario);
   Future<int> loginComEmailAndSenha(String email, String senha) => _authResources.loginComEmailAndSenha(email, senha);
   Future<void> signOut() => _authResources.sair;
+
 }
+Repository repository = Repository();

@@ -1,4 +1,6 @@
 
+import 'package:alfa_banck/src/modules/usuario.dart';
+import 'package:alfa_banck/src/resources/repository/persistationDb.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 
@@ -9,11 +11,12 @@ class AuthenticationResources {
   //Recebe no seu fluxo objetos do tipo do firebase user, contem todas as informações do usuario atual logado
   Stream<User> get onAuthStateChange => _firebaseAuth.authStateChanges();
 
-  Future<int> cadastrarComEmailAndSenha(
-      String email, String senha) async {
+  Future<int> cadastrarComEmailAndSenha(Usuario usuario) async {
     try {
+      print("Authentication Resources tentando cadastrar usuario: ${usuario.email}, ${usuario.senha}");
       await _firebaseAuth
-          .createUserWithEmailAndPassword(email: email, password: senha);
+          .createUserWithEmailAndPassword(email: usuario.email, password: usuario.senha);
+      await persistenceService.adicionarUsuario(usuario);
       return 1;
     } on PlatformException catch (e) {
       print('Platform Exception: Authentication ${e.toString()}');
@@ -26,6 +29,7 @@ class AuthenticationResources {
 
   Future<int> loginComEmailAndSenha(String email, String senha) async {
     try {
+      print('tentando: $email, senha: $senha');
       await _firebaseAuth.signInWithEmailAndPassword(email: email, password: senha);
       return 1;
     } on PlatformException catch(e) {

@@ -9,6 +9,7 @@ class EditorUsuario extends StatelessWidget {
   final Icon icon;
   TextInputType tipoEntrada;
   List<TextInputFormatter> formatters;
+  final bool obscureText;
 
   EditorUsuario(
       {this.controller,
@@ -16,7 +17,9 @@ class EditorUsuario extends StatelessWidget {
       this.dica,
       this.icon,
       this.tipoEntrada,
-      this.formatters});
+      this.formatters,
+      this.obscureText
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,7 @@ class EditorUsuario extends StatelessWidget {
           keyboardType: this.tipoEntrada,
           controller: this.controller,
           inputFormatters: this.formatters,
+          obscureText: obscureText != null ? obscureText : false,
         ),
       ),
     );
