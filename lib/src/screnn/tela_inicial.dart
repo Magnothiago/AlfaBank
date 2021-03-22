@@ -1,7 +1,7 @@
 import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:flutter/material.dart';
 import '../components/button_login.dart';
-import 'formulario_cadastro_user.dart';
+import 'screen_user_form.dart';
 import 'login.dart';
 
 class TelaInicial extends StatelessWidget {
@@ -47,7 +47,7 @@ class TelaInicial extends StatelessWidget {
 
               future.then((usuarioRecebido){
                 this.usuario = usuarioRecebido;
-                print(usuario.toString());
+                print(usuario.toMap());
               });
             }),
           ],

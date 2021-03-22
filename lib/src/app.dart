@@ -1,8 +1,8 @@
-import 'package:alfa_banck/root_page.dart';
-import 'package:alfa_banck/src/screnn/formulario_cadastro_user.dart';
+import 'file:///C:/Users/w_bre/flutter-workspace/ProjetoLP4/AlfaBank/lib/src/root_page.dart';
+import 'package:alfa_banck/src/screnn/screen_user_form.dart';
 import 'package:alfa_banck/src/screnn/login.dart';
 import 'package:alfa_banck/src/screnn/tela_inicial.dart';
-import 'package:alfa_banck/src/screnn/tela_principal.dart';
+import 'package:alfa_banck/src/screnn/screen_main.dart';
 import 'package:flutter/material.dart';
 
 class AlfaBank extends StatelessWidget {

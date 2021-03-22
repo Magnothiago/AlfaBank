@@ -1,5 +1,6 @@
 import 'package:alfa_banck/src/components/editorUsuario.dart';
 import 'package:alfa_banck/src/modules/usuario.dart';
+import 'package:alfa_banck/src/resources/repository.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
   final TextEditingController _campoEmailController = TextEditingController();
   final TextEditingController _campoTelefoneController =
       TextEditingController();
+  final TextEditingController _campoSenhaController = TextEditingController();
 
   bool validarDados(nome, cpf, email, telefone) {
     return (nome != null &&
@@ -75,6 +77,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                         ? null
                         : "coloque um e-mail válido";
                   },
+                  controller: _campoEmailController,
                 ),
               ),
             ),
@@ -89,6 +92,17 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                 TelefoneInputFormatter(),
               ],
             ),
+            EditorUsuario(
+              controller: this._campoSenhaController,
+              dica: "",
+              rotulo: "Senha",
+              icon: Icon(Icons.lock),
+              tipoEntrada: TextInputType.phone,
+              formatters: [
+                FilteringTextInputFormatter.digitsOnly,
+              ],
+              obscureText: true,
+            ),
             SizedBox(
               height: 20,
             ),
@@ -102,15 +116,17 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                 ),
               ),
               child: Text("Cadastrar"),
-              onPressed: () {
+              onPressed: () async {
                 var nome = this._campoNomeController.text;
                 var cpf = this._campoCpfController.text;
                 var email = this._campoEmailController.text;
                 var telefone = this._campoTelefoneController.text;
+                var senha = this._campoSenhaController.text;
 
-                Usuario usuario = Usuario(nome, cpf, email, telefone);
-
+                Usuario usuario = Usuario(nome, cpf, email, telefone, senha);
+                print("scre user form ${usuario.email}");
                 if (validarDados(usuario.nome, usuario.cpf, usuario.email, usuario.telefone)) {
+                 await repository.cadastroComEmailAndSenha(usuario);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text("Deu tudo certo, você tá dentro!"),

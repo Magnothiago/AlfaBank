@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/editor.dart';
+import '../components/edit.dart';
 import '../modules/transferencia.dart';
 
 class FormularioTransferencia extends StatelessWidget {
