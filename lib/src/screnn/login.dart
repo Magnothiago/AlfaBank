@@ -5,6 +5,8 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../resources/repository.dart';
+
 class Login extends StatelessWidget {
   static const String routeName = "login_page";
   TextEditingController _controllerCpf = TextEditingController();
@@ -64,6 +66,9 @@ class Login extends StatelessWidget {
               title: 'Login',
               hasBorder: true,
               aoClicar: () {
+                /**
+                 * Criar funcionalidade para fazer login do usuário pelo firebase
+                 */
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => TelaPrincipal()));
               },
