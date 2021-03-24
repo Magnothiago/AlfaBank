@@ -39,7 +39,7 @@ class AuthenticationBloc implements Bloc {
     mostrarProgressBar(true);
     int response = await repository.loginComEmailAndSenha(_email.value, _senha.value);
     isLogado.listen((event) {
-      print("AUTHENTICATION BLOC, TENTANDO FAZER LOGIN $event");
+      print("authentication_bloc line: 42\n, login: $event");
     });
     mostrarProgressBar(false);
     return response;
