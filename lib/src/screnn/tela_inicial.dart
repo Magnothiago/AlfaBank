@@ -47,7 +47,7 @@ class TelaInicial extends StatelessWidget {
 
               future.then((usuarioRecebido){
                 this.usuario = usuarioRecebido;
-                print(usuario.toMap());
+                print("tela_inicial line: 50\n ${usuario.toMap()}");
               });
             }),
           ],
