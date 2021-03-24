@@ -126,20 +126,37 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                 Usuario usuario = Usuario(nome, cpf, email, telefone, senha);
                 print("scre user form ${usuario.email}");
                 if (validarDados(usuario.nome, usuario.cpf, usuario.email, usuario.telefone)) {
-                 await repository.cadastroComEmailAndSenha(usuario);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text("Deu tudo certo, você tá dentro!"),
-                      backgroundColor: Colors.red,
-                      action: SnackBarAction(
-                        label: "Ok",
-                        onPressed: () {},
-                        textColor: Colors.white,
+                 int retorno = await repository.cadastroComEmailAndSenha(usuario);
+                  if (retorno > 0) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Deu tudo certo, você tá dentro!"),
+                        backgroundColor: Colors.red,
+                        action: SnackBarAction(
+                          label: "Ok",
+                          onPressed: () {},
+                          textColor: Colors.white,
+                        ),
+                        duration: Duration(seconds: 6),
                       ),
-                      duration: Duration(seconds: 6),
-                    ),
-                  );
-                  Navigator.pop(context, usuario);
+                    );
+                    Navigator.pop(context, usuario);
+                  } else {
+                    //TODO EXTRAIR SCAFFOLDMESENGER E CONFIGURAR EM UM METODO
+                    // A PARTE
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Deu ruim! Usuário já cadastrado."),
+                        backgroundColor: Colors.red,
+                        action: SnackBarAction(
+                          label: "Ok",
+                          onPressed: () {},
+                          textColor: Colors.white,
+                        ),
+                        duration: Duration(seconds: 8),
+                      ),
+                    );
+                  }
                 }
               },
             )

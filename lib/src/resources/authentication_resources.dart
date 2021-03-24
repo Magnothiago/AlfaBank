@@ -1,4 +1,3 @@
-
 import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository/persistationDb.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,30 +12,43 @@ class AuthenticationResources {
 
   Future<int> cadastrarComEmailAndSenha(Usuario usuario) async {
     try {
-      print("Authentication Resources tentando cadastrar usuario: ${usuario.email}, ${usuario.senha}");
-      await _firebaseAuth
-          .createUserWithEmailAndPassword(email: usuario.email, password: usuario.senha);
-      await persistenceService.adicionarUsuario(usuario);
-      return 1;
+      print(
+          "authentication_resources line: 16 ${usuario.email}, ${usuario.cpf}");
+      bool salvar = await persistenceService.adicionarUsuario(usuario);
+      if (salvar) {
+        await _firebaseAuth.createUserWithEmailAndPassword(
+            email: usuario.email, password: usuario.senha);
+        return 1;
+      } else {
+        print(
+            'Ocorreu algum problema ao cadastrar o usuário, criar mensagem para exibição.');
+        return 0;
+      }
     } on PlatformException catch (e) {
-      print('Platform Exception: Authentication ${e.toString()}');
+      print(
+          'authentication_resources line: 22\n Platform Exception: Authentication ${e.toString()}');
       return -1;
     } catch (e) {
-      print('Exception: Authenticaton ${e.toString()}');
+      print(
+          'authentication_resources line: 22\n Authenticaton ${e.toString()}');
       return -2;
     }
   }
 
   Future<int> loginComEmailAndSenha(String email, String senha) async {
     try {
-      print('tentando: $email, senha: $senha');
-      await _firebaseAuth.signInWithEmailAndPassword(email: email, password: senha);
+      print(
+          'authentication_resources line: 32\ntentando: $email, senha: $senha');
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: senha);
       return 1;
-    } on PlatformException catch(e) {
-      print('Platform exception: AuthenticationResources ${e.toString()}');
+    } on PlatformException catch (e) {
+      print(
+          'authentication_resources line: 36\nPlatform exception: AuthenticationResources ${e.toString()}');
       return -1;
     } catch (e) {
-      print('Exception: AuthenticationResources ${e.toString()}');
+      print(
+          'authentication_resources  line: 36\nException: AuthenticationResources ${e.toString()}');
       return -2;
     }
   }
@@ -45,6 +57,6 @@ class AuthenticationResources {
     _firebaseAuth.signOut();
   }
 
-  //TODO ESCREVER METODO LINHA 40 authentication_resources.dart
+//TODO ESCREVER METODO LINHA 40 authentication_resources.dart
 
 }
