@@ -68,16 +68,6 @@ class Login extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => TelaPrincipal()));
               },
             ),
-            SizedBox(
-              height: 10,
-            ),
-            // Button_login_inicial(
-            //   title: 'Voltar',
-            //   hasBorder: true,
-            //   aoClicar: () {
-            //     Navigator.of(context).pop();
-            //   },
-            // ),
           ],
         ),
       ),
