@@ -13,6 +13,7 @@ class PersistenceService {
         print('retorno falso, pois já tem um usuário cadastrado');
         return false;
       }
+      print("persistentio line: 17 ${usuario.toMap()}");
       await users
           .add(usuario.toMap())
           .then((a) => print('persistion line: 22\nSalvei o usuario'))

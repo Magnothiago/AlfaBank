@@ -1,9 +1,9 @@
 class Usuario {
-  final String nome;
-  final String cpf;
-  final String email;
-  final String telefone;
-  final String senha;
+  String nome;
+  String cpf;
+  String email;
+  String telefone;
+  String senha;
 
   Usuario(this.nome, this.cpf, this.email, this.telefone, this.senha);
 
@@ -19,12 +19,12 @@ class Usuario {
       'cpf': cpf,
       'email': email,
       'telefone': telefone,
-      'senha': senha,
     };
   }
 
   static Usuario unMap(Map<String, dynamic> usuario) {
     return Usuario(usuario['nome'], usuario['cpf'], usuario['email'], usuario['telefone'], usuario['senha']);
   }
+
 
 }
