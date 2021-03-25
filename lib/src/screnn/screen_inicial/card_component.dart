@@ -46,7 +46,7 @@ class CardItem extends StatelessWidget {
                     Text(
                       this._subtitle,
                       style: TextStyle(
-                        color: Colors.redAccent,
+                        color: Colors.black54,
                         fontSize: 20,
                       ),
                     ),

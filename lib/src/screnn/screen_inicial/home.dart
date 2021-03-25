@@ -24,10 +24,19 @@ class Perfil extends StatelessWidget {
               height: 10,
             ),
             CardItem(
-              'Transferencias',
+              'Nova transferência',
               Colors.black,
-              '250.00',
+              '',
               () {},
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CardItem(
+              'Fatrura',
+              Colors.black,
+              '120',
+                  () {},
             ),
           ],
         ),
