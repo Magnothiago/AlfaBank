@@ -1,5 +1,6 @@
 import 'package:alfa_banck/src/components/button_login_start.dart';
 import 'package:alfa_banck/src/components/text_fild.dart';
+import 'package:alfa_banck/src/screnn/screen_inicial/home.dart';
 import 'package:alfa_banck/src/screnn/screen_main.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
@@ -69,8 +70,10 @@ class Login extends StatelessWidget {
                 /**
                  * Criar funcionalidade para fazer login do usuário pelo firebase
                  */
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TelaPrincipal()));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => TelaPrincipal()));
+                //
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Perfil()));
               },
             ),
           ],

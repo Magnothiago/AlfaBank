@@ -4,6 +4,7 @@ import 'card_component.dart';
 import 'stack_container.dart';
 
 class Perfil extends StatelessWidget {
+  static const String homeName = "tela_home";
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
