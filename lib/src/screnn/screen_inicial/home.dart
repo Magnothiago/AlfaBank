@@ -5,6 +5,7 @@ import 'stack_container.dart';
 
 class Perfil extends StatelessWidget {
   static const String homeName = "tela_home";
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
@@ -17,13 +18,16 @@ class Perfil extends StatelessWidget {
               'Saldo',
               Colors.black,
               '250.00',
-                  () {},
+              () {},
+            ),
+            SizedBox(
+              height: 10,
             ),
             CardItem(
               'Transferencias',
               Colors.black,
               '250.00',
-                  () {},
+              () {},
             ),
           ],
         ),

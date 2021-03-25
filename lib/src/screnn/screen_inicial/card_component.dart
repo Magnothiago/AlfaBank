@@ -17,10 +17,14 @@ class CardItem extends StatelessWidget {
           this.aoClicar();
         },
         child: Card(
+          elevation: 12,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30)
+          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 21,
+              horizontal: 20,
+              vertical: 25,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
