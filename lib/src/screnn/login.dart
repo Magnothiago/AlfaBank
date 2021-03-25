@@ -6,8 +6,6 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../resources/repository.dart';
-
 class Login extends StatelessWidget {
   static const String routeName = "login_page";
   TextEditingController _controllerCpf = TextEditingController();
@@ -21,14 +19,11 @@ class Login extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(32),
         child: ListView(
-          //mainAxisAlignment: MainAxisAlignment.end,
           children: [
             SizedBox(
               width: 240,
               height: 240,
-              //child: Image.asset('assets/Logo_alfa.png'),
               child: Image.asset('assets/alfa.png'),
-              //child: Image.asset('assets/alfa_novo.png'),
             ),
             TextFildLogin(
               tipoTeclado: TextInputType.number,

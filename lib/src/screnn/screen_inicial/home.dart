@@ -38,6 +38,18 @@ class Perfil extends StatelessWidget {
               '120',
                   () {},
             ),
+            SizedBox(
+              height: 10,
+            ),
+            CardItem(
+              'Emprestimo',
+              Colors.black,
+              '9.000.00',
+                  () {},
+            ),
+            SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
