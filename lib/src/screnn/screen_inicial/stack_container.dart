@@ -4,9 +4,6 @@ import 'top_bar.dart';
 
 
 class StackContainer extends StatelessWidget {
-  const StackContainer({
-    Key key,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
