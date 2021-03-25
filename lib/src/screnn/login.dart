@@ -1,5 +1,6 @@
 import 'package:alfa_banck/src/components/button_login_start.dart';
 import 'package:alfa_banck/src/components/text_fild.dart';
+import 'package:alfa_banck/src/screnn/screen_inicial/home.dart';
 import 'package:alfa_banck/src/screnn/screen_main.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +19,11 @@ class Login extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(32),
         child: ListView(
-          //mainAxisAlignment: MainAxisAlignment.end,
           children: [
             SizedBox(
               width: 240,
               height: 240,
-              //child: Image.asset('assets/Logo_alfa.png'),
               child: Image.asset('assets/alfa.png'),
-              //child: Image.asset('assets/alfa_novo.png'),
             ),
             TextFildLogin(
               tipoTeclado: TextInputType.number,
@@ -64,8 +62,13 @@ class Login extends StatelessWidget {
               title: 'Login',
               hasBorder: true,
               aoClicar: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TelaPrincipal()));
+                /**
+                 * Criar funcionalidade para fazer login do usuário pelo firebase
+                 */
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => TelaPrincipal()));
+                //
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Perfil()));
               },
             ),
           ],
