@@ -124,7 +124,6 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
                 var senha = this._campoSenhaController.text;
 
                 Usuario usuario = Usuario(nome, cpf, email, telefone, senha);
-                print("scre user form ${usuario.email}");
                 if (validarDados(usuario.nome, usuario.cpf, usuario.email, usuario.telefone)) {
                  int retorno = await repository.cadastroComEmailAndSenha(usuario);
                   if (retorno > 0) {

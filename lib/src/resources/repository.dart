@@ -10,8 +10,8 @@ class Repository {
 
   Stream<User> get onAuthStateChange => _authResources.onAuthStateChange;
   Future<int> cadastroComEmailAndSenha(Usuario usuario) => _authResources.cadastrarComEmailAndSenha(usuario);
-  Future<int> loginComEmailAndSenha(String email, String senha) => _authResources.loginComEmailAndSenha(email, senha);
+  Future<int> loginComCpfAndSenha(Usuario usuario, String cpf, String senha) =>
+      _authResources.loginComEmailAndSenha(usuario, cpf, senha);
   Future<void> signOut() => _authResources.sair;
-
 }
 Repository repository = Repository();
