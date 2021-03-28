@@ -1,7 +1,9 @@
 import 'package:alfa_banck/src/components/button_login_start.dart';
 import 'package:alfa_banck/src/components/text_fild.dart';
-import 'package:alfa_banck/src/screnn/screen_inicial/home.dart';
-import 'package:alfa_banck/src/screnn/screen_main.dart';
+import 'package:alfa_banck/src/modules/usuario.dart';
+import 'package:alfa_banck/src/resources/repository.dart';
+import 'package:alfa_banck/src/resources/repository/persistationDb.dart';
+import 'package:alfa_banck/src/root_page.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +12,6 @@ class Login extends StatelessWidget {
   static const String routeName = "login_page";
   TextEditingController _controllerCpf = TextEditingController();
   TextEditingController _controllerPassword = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,10 @@ class Login extends StatelessWidget {
               ocultarTexto: false,
               prefixIconData: Icons.mail_outline,
               controller: _controllerCpf,
-              formatters: [FilteringTextInputFormatter.digitsOnly, CpfInputFormatter()],
+              formatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                CpfInputFormatter()
+              ],
             ),
             SizedBox(
               height: 20.0,
@@ -61,19 +65,33 @@ class Login extends StatelessWidget {
             Button_login_inicial(
               title: 'Login',
               hasBorder: true,
-              aoClicar: () {
-                /**
-                 * Criar funcionalidade para fazer login do usuário pelo firebase
-                 */
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => TelaPrincipal()));
-                //
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Perfil()));
+              aoClicar: () async {
+                bool isLogado = await autenticar(
+                    _controllerCpf.value.text, _controllerPassword.value.text);
+                chamarRota(isLogado, context);
               },
             ),
           ],
         ),
       ),
     );
+  }
+
+  Future<bool> autenticar(String cpf, String password) async {
+    int retorno;
+    Usuario u = await persistenceService.findUsersByCpf(cpf);
+    await repository.loginComCpfAndSenha(u, u.email, password)
+        .then((value) => retorno = value);
+    return usuarioAutenticado(retorno);
+  }
+
+  bool usuarioAutenticado(int i) {
+    return i > 0 ? true : false;
+  }
+
+  chamarRota(bool b, BuildContext context) {
+    if (b == true)
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => RootPage()));
   }
 }

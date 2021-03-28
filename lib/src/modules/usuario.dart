@@ -21,10 +21,4 @@ class Usuario {
       'telefone': telefone,
     };
   }
-
-  static Usuario unMap(Map<String, dynamic> usuario) {
-    return Usuario(usuario['nome'], usuario['cpf'], usuario['email'], usuario['telefone'], usuario['senha']);
-  }
-
-
 }
