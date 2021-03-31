@@ -1,14 +1,13 @@
 import 'package:alfa_banck/src/components/button_login_start.dart';
 import 'package:alfa_banck/src/components/text_fild.dart';
-import 'package:alfa_banck/src/modules/usuario.dart';
-import 'package:alfa_banck/src/resources/repository.dart';
-import 'package:alfa_banck/src/resources/repository/persistationDb.dart';
+import 'package:alfa_banck/src/resources/repository/persistionSQFLITE.dart';
 import 'package:alfa_banck/src/root_page.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Login extends StatelessWidget {
+  final persistenceServiceSQL = PersistenceServiceSQL.instancia;
   static const String routeName = "login_page";
   TextEditingController _controllerCpf = TextEditingController();
   TextEditingController _controllerPassword = TextEditingController();
@@ -79,10 +78,10 @@ class Login extends StatelessWidget {
 
   Future<bool> autenticar(String cpf, String password) async {
     int retorno;
-    Usuario u = await persistenceService.findUsersByCpf(cpf);
-    await repository.loginComCpfAndSenha(u, u.email, password)
-        .then((value) => retorno = value);
-    return usuarioAutenticado(retorno);
+    persistenceServiceSQL.findUsuarioByCPF(cpf);
+    // await repository.loginComCpfAndSenha(u, u.email, password)
+    //     .then((value) => retorno = value);
+    // return usuarioAutenticado(retorno);
   }
 
   bool usuarioAutenticado(int i) {

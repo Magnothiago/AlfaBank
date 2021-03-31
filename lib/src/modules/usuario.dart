@@ -19,6 +19,7 @@ class Usuario {
       'cpf': cpf,
       'email': email,
       'telefone': telefone,
+      'senha': senha
     };
   }
 }

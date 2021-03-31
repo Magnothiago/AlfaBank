@@ -1,10 +1,10 @@
 import 'package:alfa_banck/src/components/editorUsuario.dart';
 import 'package:alfa_banck/src/modules/usuario.dart';
-import 'package:alfa_banck/src/resources/repository.dart';
-import 'package:email_validator/email_validator.dart';
+import 'package:alfa_banck/src/resources/repository/persistionSQFLITE.dart';
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:flutter/material.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CadastroUsuario extends StatefulWidget {
@@ -14,6 +14,7 @@ class CadastroUsuario extends StatefulWidget {
 }
 
 class _CadastroUsuarioState extends State<CadastroUsuario> {
+  final _persistenceServiceSQL = PersistenceServiceSQL.instancia;
   final TextEditingController _campoNomeController = TextEditingController();
   final TextEditingController _campoCpfController = TextEditingController();
   final TextEditingController _campoEmailController = TextEditingController();
@@ -125,7 +126,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
 
                 Usuario usuario = Usuario(nome, cpf, email, telefone, senha);
                 if (validarDados(usuario.nome, usuario.cpf, usuario.email, usuario.telefone)) {
-                 int retorno = await repository.cadastroComEmailAndSenha(usuario);
+                 int retorno = await _persistenceServiceSQL.insertUsuario(usuario);
                   if (retorno > 0) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
