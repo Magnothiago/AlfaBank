@@ -1,5 +1,6 @@
 import 'package:alfa_banck/src/root_page.dart';
 import 'package:alfa_banck/src/screnn/screen_inicial/home.dart';
+import 'package:alfa_banck/src/screnn/screen_user_detail.dart';
 import 'package:alfa_banck/src/screnn/screen_user_form.dart';
 import 'package:alfa_banck/src/screnn/login.dart';
 import 'package:alfa_banck/src/screnn/tela_inicial.dart';
@@ -25,7 +26,8 @@ class AlfaBank extends StatelessWidget {
           TelaPrincipal.routeName: (context) => TelaPrincipal(),
           TelaInicial.routeName: (context) => TelaInicial(),
           CadastroUsuario.routeName: (context) => CadastroUsuario(),
-          Perfil.homeName:(context)=> Perfil()
+          Perfil.homeName:(context)=> Perfil(),
+          PerfilUsuario.routeName:(context)=> PerfilUsuario()
         }
     );
   }
