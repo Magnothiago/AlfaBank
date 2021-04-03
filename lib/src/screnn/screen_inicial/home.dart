@@ -2,7 +2,8 @@ import 'package:alfa_banck/src/blocs/authentication/authentication_bloc.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-
+import '../screen_transfer.dart';
+import '../screen_user_detail.dart';
 import 'card_component.dart';
 import 'stack_container.dart';
 
@@ -30,6 +31,8 @@ class Perfil extends StatelessWidget {
               Colors.black,
               '',
               () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder:(context)=> FormularioTransferencia()),);
               },
             ),
             SizedBox(
@@ -56,6 +59,18 @@ class Perfil extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            CardItem(
+              'Editar Perfil',
+              Colors.black,
+              'Nome do cara',
+                  () {
+               Navigator.push(context,
+                 MaterialPageRoute(builder: (context)=> PerfilUsuario() ), );
+                  },
+            ),
+            SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

@@ -7,7 +7,7 @@ class FormularioTransferencia extends StatelessWidget {
   final TextEditingController controladorCampoNumeroConta =
       TextEditingController();
   final TextEditingController controladorCampoValor = TextEditingController();
-
+  static const String routName = "screen_transferencia";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
