@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PerfilUsuario extends StatelessWidget {
+  static const String routeName = "tela_user_detalhes";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
