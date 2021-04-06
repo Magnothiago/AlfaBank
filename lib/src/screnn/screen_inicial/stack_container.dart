@@ -1,7 +1,6 @@
 import 'package:alfa_banck/src/resources/repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'custom_cliper.dart';
 import 'top_bar.dart';
 
