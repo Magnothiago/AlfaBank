@@ -1,5 +1,6 @@
 import 'package:alfa_banck/src/components/editorUsuario.dart';
 import 'package:alfa_banck/src/modules/usuario.dart';
+import 'package:alfa_banck/src/resources/repository.dart';
 import 'package:alfa_banck/src/resources/repository/persistionSQFLITE.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
@@ -127,7 +128,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
 
                 Usuario usuario = Usuario(nome, cpf, email, telefone, senha);
                 if (validarDados(usuario.nome, usuario.cpf, usuario.email, usuario.telefone)) {
-                 int retorno = await _persistenceServiceSQL.insertUsuario(usuario);
+                 int retorno = await repository.cadastroComEmailAndSenha(usuario);
                   if (retorno > 0) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(

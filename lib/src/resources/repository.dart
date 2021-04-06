@@ -1,17 +1,17 @@
 
 import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/authentication_resources.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 //classe que vai ter os metodos referente ao backend somente ela acessara os metodos dos blocks
 class Repository {
 
   final _authResources = AuthenticationResources();
 
-  Stream<User> get onAuthStateChange => _authResources.onAuthStateChange;
-  Future<int> cadastroComEmailAndSenha(Usuario usuario) => _authResources.cadastrarComEmailAndSenha(usuario);
+  Stream<Usuario> get onAuthStateChange => _authResources.user;
+  Future<int> cadastroComEmailAndSenha(Usuario usuario) => _authResources
+      .cadastrarComEmailAndSenhaSQL(usuario);
   Future<int> loginComCpfAndSenha(Usuario usuario, String cpf, String senha) =>
-      _authResources.loginComEmailAndSenha(usuario, cpf, senha);
-  Future<void> signOut() => _authResources.sair;
+      _authResources.loginComCPFAndSenhaSQL(cpf, senha);
+  Future<void> signOut() => _authResources.sairSQL;
 }
 Repository repository = Repository();

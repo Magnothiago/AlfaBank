@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:alfa_banck/src/modules/usuario.dart';
-import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -40,17 +39,18 @@ class PersistenceServiceSQL {
     );
   }
 
-  Future<int> insertUsuario(Usuario usuario) async {
+  Future<bool> insertUsuario(Usuario usuario) async {
     final Database db = await database;
     try {
+      print(usuario.toString());
       await db.insert(
           'usuario',
           usuario.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace);
-      return 1;
+      return true;
     } catch (e) {
       print(e.toString());
-      return -2;
+      return false;
     }
   }
 
@@ -73,7 +73,6 @@ class PersistenceServiceSQL {
     if (list.length > 1) return null;
     for (var item in list) {
       u = unMap(item);
-      print(u.toString());
     }
     return u;
   }
