@@ -1,4 +1,3 @@
-import 'package:alfa_banck/src/blocs/authentication/authentication_bloc.dart';
 import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository/persistationDb.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,7 +13,10 @@ class AuthenticationResources {
     try {
       bool salvar = await persistenceService.adicionarUsuario(usuario);
       if (salvar) {
-        await _firebaseAuth.createUserWithEmailAndPassword(email: usuario.email, password: usuario.senha);
+        await _firebaseAuth.createUserWithEmailAndPassword(email: usuario
+            .email, password: usuario.senha);
+        await _firebaseAuth.currentUser.updateProfile(displayName: usuario
+            .nome);
         return 1;
       } else {
         print('Ocorreu algum problema ao cadastrar o usuário, criar mensagem para exibição.');
@@ -29,12 +31,11 @@ class AuthenticationResources {
     }
   }
 
-
-
   Future<int> loginComEmailAndSenha(Usuario usuario, String email, String
   senha) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(email: email, password: senha);
+      await _firebaseAuth.currentUser.updateProfile(displayName: usuario.nome);
       return 1;
     } on PlatformException catch (e) {
       print(
@@ -49,20 +50,5 @@ class AuthenticationResources {
 
   Future<void> get sair async {
     _firebaseAuth.signOut();
-  }
-
-  Future<void> setUserDisplayName(String displayName) async {
-    onAuthStateChange.listen((event) {
-      print(event);
-      event.updateProfile(displayName: displayName);
-   });
-  }
-
-  void alterarUsuarioLogado(Usuario usuario) async {
-    authenticationBloc.mudarEmail(usuario.email);
-    authenticationBloc.mudarNomeUsuario(usuario.nome);
-    authenticationBloc.mudarIsLogado(true);
-    authenticationBloc.mudarCpf(usuario.cpf);
-    await setUserDisplayName(usuario.nome);
   }
 }
