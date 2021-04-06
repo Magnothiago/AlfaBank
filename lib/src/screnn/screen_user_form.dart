@@ -118,6 +118,7 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
               ),
               child: Text("Cadastrar"),
               onPressed: () async {
+                await _persistenceServiceSQL.printAllUser();
                 var nome = this._campoNomeController.text;
                 var cpf = this._campoCpfController.text;
                 var email = this._campoEmailController.text;
