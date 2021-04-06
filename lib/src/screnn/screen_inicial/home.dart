@@ -1,9 +1,9 @@
 import 'package:alfa_banck/src/blocs/authentication/authentication_bloc.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
-import 'package:alfa_banck/src/root_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+
 import '../screen_transfer.dart';
 import '../screen_user_detail.dart';
 import 'card_component.dart';
@@ -12,15 +12,16 @@ import 'stack_container.dart';
 class Perfil extends StatelessWidget {
   static const String homeName = "tela_home";
   Stream<User> _currentUser;
-
   @override
   Widget build(BuildContext context) {
+
     _currentUser = repository.onAuthStateChange;
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
     return StreamBuilder(
         stream: _currentUser,
         builder: (context, AsyncSnapshot<User> snapshot) {
-          return snapshot.hasData ? Scaffold(
+          return snapshot.hasData && snapshot.data.displayName != null ?
+          Scaffold(
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -83,7 +84,8 @@ class Perfil extends StatelessWidget {
                 ],
               ),
             ),
-          ) : RootPage();
+          ) : CircularProgressIndicator(backgroundColor: Colors.white,
+            strokeWidth: 5,);
         });
   }
 }
