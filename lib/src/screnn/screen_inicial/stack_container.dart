@@ -1,18 +1,18 @@
+import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'custom_cliper.dart';
 import 'top_bar.dart';
 
 
 class StackContainer extends StatelessWidget {
-  Stream<User> _currentUser;
+  Stream<Usuario> _currentUser;
   @override
   Widget build(BuildContext context) {
    _currentUser = repository.onAuthStateChange;
     return StreamBuilder(
       stream: _currentUser,
-      builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<Usuario> snapshot) {
         return snapshot.hasData ? Container(
           height: 300,
           child: Stack(
@@ -37,7 +37,7 @@ class StackContainer extends StatelessWidget {
                       // borderWidth: 5.0,
                     ),
                     Text(
-                      "Olá, ${snapshot.data.displayName}",
+                      "Olá, ${snapshot.data.nome}",
                       style: TextStyle(fontSize: 20),
                     ),
                   ],

@@ -1,6 +1,6 @@
 import 'package:alfa_banck/src/blocs/authentication/authentication_bloc.dart';
+import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 
@@ -11,7 +11,7 @@ import 'stack_container.dart';
 
 class Perfil extends StatelessWidget {
   static const String homeName = "tela_home";
-  Stream<User> _currentUser;
+  Stream<Usuario> _currentUser;
   @override
   Widget build(BuildContext context) {
 
@@ -19,8 +19,8 @@ class Perfil extends StatelessWidget {
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
     return StreamBuilder(
         stream: _currentUser,
-        builder: (context, AsyncSnapshot<User> snapshot) {
-          return snapshot.hasData && snapshot.data.displayName != null ?
+        builder: (context, AsyncSnapshot<Usuario> snapshot) {
+          return snapshot.hasData && snapshot.data.nome != null ?
           Scaffold(
             body: SingleChildScrollView(
               child: Column(
@@ -69,7 +69,7 @@ class Perfil extends StatelessWidget {
                   CardItem(
                     'Editar Perfil',
                     Colors.black,
-                    snapshot.data.displayName,
+                    snapshot.data.nome,
                     () {
                       Navigator.push(
                         context,
