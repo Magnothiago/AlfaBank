@@ -11,7 +11,7 @@ class PersistenceService {
         value) => value);
     try {
       if (novoUsuario != null) {
-        print('retorno falso, pois já tem um usuário cadastrado');
+        //retorno falso, pois já tem um usuário cadastrado
         return false;
       }
       print("persistentio line: 17 ${usuario.toMap()}");
@@ -47,7 +47,7 @@ class PersistenceService {
     Usuario usuario;
     try {
         usuario = await users.where('cpf', isEqualTo: cpf).get().then((result) {
-        print("persistation line 55\n ${result.size}");
+        print("persistation line 55, size: ${result.size}");
         return (result.size > 1) ? null : unMap(result.docs.first.data());
       });
     return usuario;
