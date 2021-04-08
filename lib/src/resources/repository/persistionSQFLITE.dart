@@ -42,22 +42,20 @@ class PersistenceServiceSQL {
   Future<bool> insertUsuario(Usuario usuario) async {
     final Database db = await database;
     try {
-      print(usuario.toString());
       await db.insert(
-          'usuario',
+          'usuarios',
           usuario.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace);
       return true;
     } catch (e) {
-      print(e.toString());
+      print("${e.toString()}");
       return false;
     }
   }
 
   Future<void> printAllUser() async {
     final Database db = await database;
-    List<Map<String, Object>> usuarios = await db.query('usuario', orderBy: 'i'
-        'd');
+    List<Map<String, Object>> usuarios = await db.query("usuarios", orderBy: "id");
     for (var item in usuarios) {
       print(unMap(item));
     }
@@ -67,7 +65,7 @@ class PersistenceServiceSQL {
     final Database db = await database;
     Usuario u;
     List<Map<String, Object>> list = await db.query(
-        'usuario',
+        'usuarios',
         where: '"cpf" = ''?',
         whereArgs: [cpf]);
     if (list.length > 1) return null;

@@ -11,13 +11,13 @@ class PersistenceService {
         value) => value);
     try {
       if (novoUsuario != null) {
-        print('retorno falso, pois já tem um usuário cadastrado');
+        //usuário já cadastrado
         return false;
       }
       print("persistentio line: 17 ${usuario.toMap()}");
       await users
           .add(usuario.toMap())
-          .then((a) => print('persistion line: 22\nSalvei o usuario'))
+          .then((a) => ('persistion line: 22\nSalvei o usuario'))
           .catchError(
             (error) {
           print('persistion line: 24\nError: $error');
@@ -37,7 +37,6 @@ class PersistenceService {
       query.docs.forEach((usuario) {
         Usuario u = unMap(usuario.data());
         usuarios.add(u);
-        print(u);
       });
     });
     return usuarios;

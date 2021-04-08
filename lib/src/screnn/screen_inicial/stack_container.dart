@@ -31,10 +31,12 @@ class StackContainer extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // CircularProfileAvatar(
-                    //   "https://i.pravatar.cc/300",
-                    //   borderWidth: 5.0,
-                    // ),
+                    CircleAvatar(
+                      backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+                      maxRadius: 60,
+                      // "https://i.pravatar.cc/300",
+                      // borderWidth: 5.0,
+                    ),
                     Text(
                       "Olá, ${snapshot.data.nome}",
                       style: TextStyle(fontSize: 20),

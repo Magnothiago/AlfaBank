@@ -4,6 +4,7 @@ import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
 import 'package:alfa_banck/src/resources/repository/persistionSQFLITE.dart';
 import 'package:alfa_banck/src/root_page.dart';
+import 'package:alfa_banck/src/screnn/tela_inicial.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -67,10 +68,20 @@ class Login extends StatelessWidget {
               title: 'Login',
               hasBorder: true,
               aoClicar: () async {
-                print(persistenceServiceSQL.printAllUser());
                 bool isLogado = await autenticar(
                     _controllerCpf.value.text, _controllerPassword.value.text);
                 chamarRota(isLogado, context);
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Button_login_inicial(
+              title: 'Voltar',
+              hasBorder: true,
+              aoClicar: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TelaInicial(),));
               },
             ),
           ],
@@ -93,7 +104,7 @@ class Login extends StatelessWidget {
 
   chamarRota(bool b, BuildContext context) {
     if (b == true)
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => RootPage()));
   }
 }
