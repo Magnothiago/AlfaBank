@@ -18,8 +18,7 @@ class AuthenticationResources {
 
   Future<int> cadastrarComEmailAndSenhaSQL(Usuario usuario) async {
     try {
-      PersistenceServiceSQL persistenceServiceSQL =
-          PersistenceServiceSQL.instancia;
+      PersistenceServiceSQL persistenceServiceSQL = PersistenceServiceSQL.instancia;
       bool salvar = await persistenceServiceSQL.insertUsuario(usuario);
       if (salvar) {
         return 1;

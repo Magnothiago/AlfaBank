@@ -42,6 +42,8 @@ class PersistenceServiceSQL {
   Future<bool> insertUsuario(Usuario usuario) async {
     final Database db = await database;
     try {
+      Usuario u = await findUsuarioByCPF(usuario.cpf);
+      if (u != null) return false;
       await db.insert(
           'usuarios',
           usuario.toMap(),

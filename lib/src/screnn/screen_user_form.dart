@@ -15,7 +15,6 @@ class CadastroUsuario extends StatefulWidget {
 }
 
 class _CadastroUsuarioState extends State<CadastroUsuario> {
-  final _persistenceServiceSQL = PersistenceServiceSQL.instancia;
   final TextEditingController _campoNomeController = TextEditingController();
   final TextEditingController _campoCpfController = TextEditingController();
   final TextEditingController _campoEmailController = TextEditingController();
@@ -119,7 +118,6 @@ class _CadastroUsuarioState extends State<CadastroUsuario> {
               ),
               child: Text("Cadastrar"),
               onPressed: () async {
-                await _persistenceServiceSQL.printAllUser();
                 var nome = this._campoNomeController.text;
                 var cpf = this._campoCpfController.text;
                 var email = this._campoEmailController.text;
