@@ -14,7 +14,11 @@ class AuthenticationResources {
     try {
       bool salvar = await persistenceService.adicionarUsuario(usuario);
       if (salvar) {
-        await _firebaseAuth.createUserWithEmailAndPassword(email: usuario.email, password: usuario.senha);
+        await _firebaseAuth.createUserWithEmailAndPassword(email: usuario
+            .email, password: usuario.senha);
+        await _firebaseAuth.currentUser.updateProfile(displayName: usuario
+            .nome);
+        await atualizarDados(usuario);
         return 1;
       } else {
         print('Ocorreu algum problema ao cadastrar o usuário, criar mensagem para exibição.');
@@ -29,12 +33,12 @@ class AuthenticationResources {
     }
   }
 
-
-
   Future<int> loginComEmailAndSenha(Usuario usuario, String email, String
   senha) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(email: email, password: senha);
+      await _firebaseAuth.currentUser.updateProfile(displayName: usuario.nome);
+      await atualizarDados(usuario);
       return 1;
     } on PlatformException catch (e) {
       print(
@@ -51,18 +55,13 @@ class AuthenticationResources {
     _firebaseAuth.signOut();
   }
 
-  Future<void> setUserDisplayName(String displayName) async {
-    onAuthStateChange.listen((event) {
-      print(event);
-      event.updateProfile(displayName: displayName);
-   });
-  }
-
-  void alterarUsuarioLogado(Usuario usuario) async {
+  Future<Usuario> atualizarDados(Usuario usuario) async {
     authenticationBloc.mudarEmail(usuario.email);
     authenticationBloc.mudarNomeUsuario(usuario.nome);
-    authenticationBloc.mudarIsLogado(true);
     authenticationBloc.mudarCpf(usuario.cpf);
-    await setUserDisplayName(usuario.nome);
+    authenticationBloc.mudarTelefone(usuario.telefone);
+    authenticationBloc.mudarSenha(usuario.senha);
+    authenticationBloc.mudarUsuario(usuario);
+    return usuario;
   }
 }
