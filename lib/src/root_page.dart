@@ -1,7 +1,7 @@
+import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
 import 'package:alfa_banck/src/screnn/screen_inicial/home.dart';
 import 'package:alfa_banck/src/screnn/tela_inicial.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RootPage extends StatefulWidget {
@@ -11,7 +11,7 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  Stream<User> _currentUser;
+  Stream<Usuario> _currentUser;
   @override
   void initState() {
     _currentUser = repository.onAuthStateChange;
@@ -19,9 +19,9 @@ class _RootPageState extends State<RootPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User>(
+    return StreamBuilder<Usuario>(
         stream: _currentUser,
-        builder: (BuildContext context, AsyncSnapshot<User> snapshat) {
+        builder: (BuildContext context, AsyncSnapshot<Usuario> snapshat) {
           return snapshat.hasData ? Perfil() : TelaInicial();
         }
     );

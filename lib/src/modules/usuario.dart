@@ -1,4 +1,5 @@
 class Usuario {
+  int id;
   String nome;
   String cpf;
   String email;
@@ -15,10 +16,12 @@ class Usuario {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'nome': nome,
       'cpf': cpf,
       'email': email,
       'telefone': telefone,
+      'senha': senha
     };
   }
 }
