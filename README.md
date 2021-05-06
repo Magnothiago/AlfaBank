@@ -1,6 +1,6 @@
 # alfa_banck
 
-Projeto feito na unialfa com objetivo de obter notas na disciplina de Linguagens de programação 4.
+Projeto feito na unialfa com objetivo de obter conhecimentos em dar e flutter.
 
 ## Getting Started
 
