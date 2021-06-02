@@ -1,10 +1,10 @@
 import 'package:alfa_banck/src/components/editorUsuario.dart';
 import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:flutter/material.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CadastroUsuario extends StatefulWidget {
