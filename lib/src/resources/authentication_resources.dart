@@ -1,8 +1,9 @@
 import 'package:alfa_banck/src/blocs/authentication/authentication_bloc.dart';
 import 'package:alfa_banck/src/modules/usuario.dart';
-import 'package:alfa_banck/src/resources/repository/persistationDb.dart';
+import 'package:alfa_banck/src/resources/repository/persistenceServiceUsers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationResources {
   //implementei firebase Auth para que nessa classe eu tenha acesso a todos os metodos do firebase
@@ -17,7 +18,7 @@ class AuthenticationResources {
           email: usuario.email, password: usuario.senha);
       await _firebaseAuth.currentUser.updateProfile(displayName: usuario.nome);
       await atualizarDados(usuario);
-      bool salvar = await persistenceService.adicionarUsuario(usuario);
+      bool salvar = await persistenceServiceUsers.adicionarUsuario(usuario);
       if (salvar) {
         return 1;
       } else {
@@ -39,10 +40,14 @@ class AuthenticationResources {
   Future<int> loginComEmailAndSenha(
       Usuario usuario, String email, String senha) async {
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: senha);
       await _firebaseAuth.currentUser.updateProfile(displayName: usuario.nome);
       await atualizarDados(usuario);
+      prefs.setString("uid", _firebaseAuth.currentUser.uid);
+      prefs.setString("email", _firebaseAuth.currentUser.email);
+      prefs.setString("cpf", usuario.cpf);
       return 1;
     } on PlatformException catch (e) {
       print(

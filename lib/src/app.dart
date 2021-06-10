@@ -1,11 +1,12 @@
+import 'package:alfa_banck/src/components/JanelaComprar.dart';
 import 'package:alfa_banck/src/root_page.dart';
+import 'package:alfa_banck/src/screnn/cartao_screen/Home_cartao.dart';
+import 'package:alfa_banck/src/screnn/login.dart';
 import 'package:alfa_banck/src/screnn/screen_inicial/home.dart';
 import 'package:alfa_banck/src/screnn/screen_transfer.dart';
 import 'package:alfa_banck/src/screnn/screen_user_detail.dart';
 import 'package:alfa_banck/src/screnn/screen_user_form.dart';
-import 'package:alfa_banck/src/screnn/login.dart';
 import 'package:alfa_banck/src/screnn/tela_inicial.dart';
-import 'package:alfa_banck/src/screnn/screen_main.dart';
 import 'package:flutter/material.dart';
 
 class AlfaBank extends StatelessWidget {
@@ -25,12 +26,13 @@ class AlfaBank extends StatelessWidget {
         routes: {
           RootPage.routeName: (context) => RootPage(),
           Login.routeName: (context) => Login(),
-          TelaPrincipal.routeName: (context) => TelaPrincipal(),
           TelaInicial.routeName: (context) => TelaInicial(),
           CadastroUsuario.routeName: (context) => CadastroUsuario(),
           Perfil.homeName:(context)=> Perfil(),
           PerfilUsuario.routeName:(context)=> PerfilUsuario(),
-          FormularioTransferencia.routName:(context)=> FormularioTransferencia()
+          FormularioTransferencia.routName:(context)=> FormularioTransferencia(),
+          HomeCartao.routeName:(context)=> HomeCartao(),
+          CompraCartao.routeName:(context) => CompraCartao(),
         }
     );
   }
