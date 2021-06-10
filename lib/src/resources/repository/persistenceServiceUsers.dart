@@ -1,8 +1,7 @@
 import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class PersistenceService {
-  //Usuario usuario;
+class PersistenceServiceUsers {
 
   CollectionReference users = FirebaseFirestore.instance.collection('usuarios');
 
@@ -14,13 +13,11 @@ class PersistenceService {
         //retorno falso, pois já tem um usuário cadastrado
         return false;
       }
-      print("persistentio line: 17 ${usuario.toMap()}");
       await users
           .add(usuario.toMap())
           .then((a) => print('persistion line: 22\nSalvei o usuario'))
           .catchError(
             (error) {
-          print('persistion line: 24\nError: $error');
           return false;
         },
       );
@@ -56,10 +53,25 @@ class PersistenceService {
     return usuario;
     }
   }
+
+  Future<Usuario> findUsersByEmail(String email) async {
+    Usuario usuario;
+    try {
+      usuario = await users.where('email', isEqualTo: email).get().then((result) {
+        print("persistation line 55, size: ${result.size}");
+        return (result.size > 1) ? null : unMap(result.docs.first.data());
+      });
+      return usuario;
+    } catch (e) {
+      print("findUserByCPF line: 50\n ${e.toString()}");
+      return usuario;
+    }
+  }
+
 //reflexão, getx, provider
   Usuario unMap(Map<String, dynamic> usuario) {
     return Usuario(usuario['nome'], usuario['cpf'], usuario['email'], usuario['telefone'], usuario['senha']);
   }
 
 }
-PersistenceService persistenceService = PersistenceService();
+PersistenceServiceUsers persistenceServiceUsers = PersistenceServiceUsers();

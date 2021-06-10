@@ -6,9 +6,10 @@ class CardModel {
   int cardBackground;
   String cardElementTop;
   String cardElementBottom;
+  double cardLimit;
 
   CardModel(this.user, this.cardNumber, this.cardExpired, this.cardType,
-      this.cardBackground, this.cardElementTop, this.cardElementBottom);
+      this.cardBackground, this.cardElementTop, this.cardElementBottom, this.cardLimit);
 }
 
 List<CardModel> cards = cardData
@@ -21,6 +22,7 @@ List<CardModel> cards = cardData
     item['cardBackground'],
     item['cardElementTop'],
     item['cardElementBottom'],
+    item['cardLimit']
   ),
 )
     .toList();
@@ -33,7 +35,8 @@ var cardData = [
     "cardType": "assets/images/mastercard_logo.png",
     "cardBackground": 0xFF1E1E99,
     "cardElementTop": "assets/svg/ellipse_top_pink.svg",
-    "cardElementBottom": "assets/svg/ellipse_bottom_pink.svg"
+    "cardElementBottom": "assets/svg/ellipse_bottom_pink.svg",
+    "cardLimit": 12000.00
   },
   {
     "user": "Thiago Magno",
@@ -42,6 +45,7 @@ var cardData = [
     "cardType": "assets/images/mastercard_logo.png",
     "cardBackground": 0xFFFF70A3,
     "cardElementTop": "assets/svg/ellipse_top_blue.svg",
-    "cardElementBottom": "assets/svg/ellipse_bottom_blue.svg"
+    "cardElementBottom": "assets/svg/ellipse_bottom_blue.svg",
+    "cardLimit": 23000.00
   }
 ];

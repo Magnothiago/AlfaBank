@@ -28,7 +28,7 @@ class EditorUsuario extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(16, 5, 16, 0),
         child: TextFormField(
           autocorrect: true,
-          autofocus: true,
+          autofocus: false,
           decoration: InputDecoration(
             hintText: this.dica,
             labelText: this.rotulo,

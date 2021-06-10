@@ -1,13 +1,16 @@
 import 'package:alfa_banck/src/components/button_login_start.dart';
 import 'package:alfa_banck/src/components/text_fild.dart';
+import 'package:alfa_banck/src/modules/cartao.dart';
 import 'package:alfa_banck/src/modules/usuario.dart';
 import 'package:alfa_banck/src/resources/repository.dart';
-import 'package:alfa_banck/src/resources/repository/persistationDb.dart';
+import 'package:alfa_banck/src/resources/repository/persistenceServiceCards.dart';
+import 'package:alfa_banck/src/resources/repository/persistenceServiceUsers.dart';
 import 'package:alfa_banck/src/root_page.dart';
 import 'package:alfa_banck/src/screnn/tela_inicial.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatelessWidget {
   static const String routeName = "login_page";
@@ -91,9 +94,12 @@ class Login extends StatelessWidget {
 
   Future<bool> autenticar(String cpf, String password) async {
     int retorno;
-    Usuario u = await persistenceService.findUsersByCpf(cpf);
+    Usuario u = await persistenceServiceUsers.findUsersByCpf(cpf);
     await repository.loginComCpfAndSenha(u, u.email, password)
         .then((value) => retorno = value);
+
+    Cartao card = new Cartao(u, "**** **** **** 1425", "03-01-2023", "assets/images/mastercard_logo.png", 0xFF1E1E99, "assets/svg/ellipse_top_pink.svg", "assets/svg/ellipse_bottom_pink.svg", "R\$ 12.000,00", "R\$ 300,00", "R\$ 11.700,00");
+    persistenceServiceCards.adicionarCard(card);
     return usuarioAutenticado(retorno);
   }
 
@@ -102,8 +108,9 @@ class Login extends StatelessWidget {
   }
 
   chamarRota(bool b, BuildContext context) {
-    if (b == true)
+    if (b) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => RootPage()));
+    }
   }
 }
